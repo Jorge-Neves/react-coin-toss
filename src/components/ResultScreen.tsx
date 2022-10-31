@@ -8,4 +8,4 @@ const ResultScreen: FC<ResultScreenProps> = ({ result }) => {
   return <div>{result}</div>;
 };
 
-export default ResultScreenProps;
+export default ResultScreen;
