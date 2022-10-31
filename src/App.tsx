@@ -18,7 +18,17 @@ const App: FC = () => {
     useState<boolean>(false);
 
   const beginGameHandler = () => {
-    console.log('placeholder');
+    const coinPossibilitiesArray = [
+      CoinTossPossibilities.HEADS,
+      CoinTossPossibilities.HEADS,
+    ];
+    const rareChanceDraw = Math.floor(Math.random() * 100);
+    const normalChanceDraw = Math.floor(Math.random() * 1);
+    if (rareChanceDraw > 90) {
+      setResult(CoinTossPossibilities.SIDE);
+    } else {
+      setResult(coinPossibilitiesArray[normalChanceDraw]);
+    }
   };
 
   const closeResultHandler = () => {
@@ -26,8 +36,10 @@ const App: FC = () => {
   };
 
   useEffect(() => {
-    console.log('placeholder');
-  });
+    if (result !== CoinTossPossibilities.DEFAULT) {
+      setShouldDisplayResult(true);
+    }
+  }, [result]);
 
   return (
     <>
