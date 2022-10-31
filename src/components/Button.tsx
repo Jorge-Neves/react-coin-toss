@@ -5,7 +5,11 @@ interface ButtonProps {
 }
 
 const Button: FC<ButtonProps> = ({ beginGameHandler }) => {
-  return <button onClick={() => beginGameHandler()}>Toss</button>;
+  return (
+    <button className="button" onClick={() => beginGameHandler()}>
+      Toss
+    </button>
+  );
 };
 
 export default Button;

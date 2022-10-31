@@ -11,6 +11,7 @@ enum CoinTossPossibilities {
 }
 
 const App: FC = () => {
+  const [beginGame, setBeginGame] = useState<boolean>(false);
   const [result, setResult] = useState<CoinTossPossibilities>(
     CoinTossPossibilities.DEFAULT
   );
@@ -18,12 +19,32 @@ const App: FC = () => {
     useState<boolean>(false);
 
   const beginGameHandler = () => {
-    console.log('placeholder');
+    setBeginGame(true);
+  };
+
+  const closeResultHandler = () => {
+    setShouldDisplayResult(false);
+    setResult(CoinTossPossibilities.DEFAULT);
   };
 
   useEffect(() => {
-    console.log('placeholder');
-  });
+    if (beginGame) {
+      const gameHandler = () => {
+        const chanceDraw = Math.floor(Math.random() * 100);
+
+        if (chanceDraw <= 49) {
+          setResult(CoinTossPossibilities.HEADS);
+        } else if (chanceDraw <= 98) {
+          setResult(CoinTossPossibilities.TAILS);
+        } else {
+          setResult(CoinTossPossibilities.SIDE);
+        }
+      };
+      gameHandler();
+      setShouldDisplayResult(true);
+      setBeginGame(false);
+    }
+  }, [beginGame]);
 
   return (
     <>
@@ -35,7 +56,9 @@ const App: FC = () => {
           </div>
         </div>
       </div>
-      {shouldDisplayResult && <ResultScreen result={result} />}
+      {shouldDisplayResult && (
+        <ResultScreen result={result} closeResultHandler={closeResultHandler} />
+      )}
     </>
   );
 };
