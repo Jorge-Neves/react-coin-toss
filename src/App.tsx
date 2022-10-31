@@ -12,16 +12,21 @@ enum CoinTossPossibilities {
 
 const App: FC = () => {
   const [beginGame, setBeginGame] = useState<boolean>(false);
+
   const [result, setResult] = useState<CoinTossPossibilities>(
     CoinTossPossibilities.DEFAULT
   );
   const [shouldDisplayResult, setShouldDisplayResult] =
     useState<boolean>(false);
 
+  /*This function begins the toin coss game and is called when the user
+   clicks the toss button*/
   const beginGameHandler = () => {
     setBeginGame(true);
   };
 
+  /*This function closes the result screen and is called when the user
+   clicks the x button on the result screen*/
   const closeResultHandler = () => {
     setShouldDisplayResult(false);
     setResult(CoinTossPossibilities.DEFAULT);
@@ -29,6 +34,7 @@ const App: FC = () => {
 
   useEffect(() => {
     if (beginGame) {
+      /*This function randomly generates the outcome of the toin coss*/
       const gameHandler = () => {
         const chanceDraw = Math.floor(Math.random() * 100);
 

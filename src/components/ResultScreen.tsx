@@ -28,6 +28,9 @@ const ResultScreen: FC<ResultScreenProps> = ({
           <p>Results</p>
           <div className="result-container">
             <span>
+              {/* The following conditional rendering section will display 
+              different emojis and text depending on the result that is passed 
+              down to this component as a prop*/}
               {result === CoinTossPossibilities.HEADS && (
                 <span className="icon"> &#128483;&#65039;</span>
               )}
