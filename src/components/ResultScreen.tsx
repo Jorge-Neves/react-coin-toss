@@ -35,13 +35,13 @@ const ResultScreen: FC<ResultScreenProps> = ({
                 <span className="icon">&#129418;</span>
               )}
               {result === CoinTossPossibilities.SIDE && (
-                <>
+                <div className="result-container">
                   <span className="icon">&#127881;</span>
                   <p>
                     You have witnessed the rare occurence of the coin landing on
                     it's side
                   </p>
-                </>
+                </div>
               )}
             </span>
             <span>{result}</span>
