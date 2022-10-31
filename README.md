@@ -1,2 +1,2 @@
 # react-coin-toss
- a react typesctipr pwa coin toss game
+ a react typescript pwa coin toss game
