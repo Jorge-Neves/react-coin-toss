@@ -3,12 +3,21 @@ import Button from './components/Button';
 import ResultScreen from './components/ResultScreen';
 import './App.css';
 
+enum CoinTossPossibilities {
+  DEFAULT = "default"
+  HEADS = 'heads',
+  TAILS = 'tails',
+  SIDE = 'side',
+}
+
 const App: FC = () => {
-  const [result, setResult] = useState<string>('');
+  const [result, setResult] = useState<CoinTossPossibilities>(CoinTossPossibilities.DEFAULT);
   const [shouldDisplayResult, setShouldDisplayResult] =
     useState<boolean>(false);
 
-  const beginGameHandler = () => {};
+  const beginGameHandler = () => {
+    console.log('placeholder');
+  };
 
   useEffect(() => {
     console.log('placeholder');
