@@ -29,13 +29,19 @@ const ResultScreen: FC<ResultScreenProps> = ({
           <div className="result-container">
             <span>
               {result === CoinTossPossibilities.HEADS && (
-                <span className="icon"> &#128100;</span>
+                <span className="icon"> &#128483;&#65039;</span>
               )}
               {result === CoinTossPossibilities.TAILS && (
-                <span className="icon">&#128187;</span>
+                <span className="icon">&#129418;</span>
               )}
               {result === CoinTossPossibilities.SIDE && (
-                <span className="icon">&#127937;</span>
+                <>
+                  <span className="icon">&#127881;</span>
+                  <p>
+                    You have witnessed the rare occurence of the coin landing on
+                    it's side
+                  </p>
+                </>
               )}
             </span>
             <span>{result}</span>
