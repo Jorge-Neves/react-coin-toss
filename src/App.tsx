@@ -4,14 +4,16 @@ import ResultScreen from './components/ResultScreen';
 import './App.css';
 
 enum CoinTossPossibilities {
-  DEFAULT = "default"
+  DEFAULT = 'default',
   HEADS = 'heads',
   TAILS = 'tails',
   SIDE = 'side',
 }
 
 const App: FC = () => {
-  const [result, setResult] = useState<CoinTossPossibilities>(CoinTossPossibilities.DEFAULT);
+  const [result, setResult] = useState<CoinTossPossibilities>(
+    CoinTossPossibilities.DEFAULT
+  );
   const [shouldDisplayResult, setShouldDisplayResult] =
     useState<boolean>(false);
 
@@ -26,19 +28,12 @@ const App: FC = () => {
   return (
     <>
       <div className="App">
-        <header className="App-header">
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <div className="screen">
+          <div className="control">
+            <span className="icon">&#129689;</span>
+            <Button beginGameHandler={beginGameHandler} />
+          </div>
+        </div>
       </div>
       {shouldDisplayResult && <ResultScreen result={result} />}
     </>
