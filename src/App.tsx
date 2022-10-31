@@ -11,6 +11,7 @@ enum CoinTossPossibilities {
 }
 
 const App: FC = () => {
+  const [beginGame, setBeginGame] = useState<boolean>(false);
   const [result, setResult] = useState<CoinTossPossibilities>(
     CoinTossPossibilities.DEFAULT
   );
@@ -18,28 +19,32 @@ const App: FC = () => {
     useState<boolean>(false);
 
   const beginGameHandler = () => {
-    const coinPossibilitiesArray = [
-      CoinTossPossibilities.HEADS,
-      CoinTossPossibilities.HEADS,
-    ];
-    const rareChanceDraw = Math.floor(Math.random() * 100);
-    const normalChanceDraw = Math.floor(Math.random() * 1);
-    if (rareChanceDraw > 90) {
-      setResult(CoinTossPossibilities.SIDE);
-    } else {
-      setResult(coinPossibilitiesArray[normalChanceDraw]);
-    }
+    setBeginGame(true);
   };
 
   const closeResultHandler = () => {
     setShouldDisplayResult(false);
+    setResult(CoinTossPossibilities.DEFAULT);
   };
 
   useEffect(() => {
-    if (result !== CoinTossPossibilities.DEFAULT) {
+    if (beginGame) {
+      const gameHandler = () => {
+        const chanceDraw = Math.floor(Math.random() * 100);
+
+        if (chanceDraw <= 49) {
+          setResult(CoinTossPossibilities.HEADS);
+        } else if (chanceDraw <= 98) {
+          setResult(CoinTossPossibilities.TAILS);
+        } else {
+          setResult(CoinTossPossibilities.SIDE);
+        }
+      };
+      gameHandler();
       setShouldDisplayResult(true);
+      setBeginGame(false);
     }
-  }, [result]);
+  }, [beginGame]);
 
   return (
     <>
