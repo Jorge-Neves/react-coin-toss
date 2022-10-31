@@ -21,6 +21,10 @@ const App: FC = () => {
     console.log('placeholder');
   };
 
+  const closeResultHandler = () => {
+    setShouldDisplayResult(false);
+  };
+
   useEffect(() => {
     console.log('placeholder');
   });
@@ -35,7 +39,9 @@ const App: FC = () => {
           </div>
         </div>
       </div>
-      {shouldDisplayResult && <ResultScreen result={result} />}
+      {shouldDisplayResult && (
+        <ResultScreen result={result} closeResultHandler={closeResultHandler} />
+      )}
     </>
   );
 };
